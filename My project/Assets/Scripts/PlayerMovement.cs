@@ -28,7 +28,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        AnimationUpdateState();
+        Jump();
+    }
 
+    private void Jump()
+    {
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
@@ -42,8 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-        AnimationUpdateState();
     }
 
     private void AnimationUpdateState()
