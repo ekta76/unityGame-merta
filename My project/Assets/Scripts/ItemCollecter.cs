@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class ItemCollecter : MonoBehaviour
 {
-    private int coins = 0;
+    public int coins = 0;
 
     [SerializeField] private Text coinsText;
+    [SerializeField] private GameObject objectToSpawn;
+    [SerializeField] private GameObject spawnToObject;
+
+    private void Start()
+    {
+        Instantiate(objectToSpawn, spawnToObject.transform);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +23,12 @@ public class ItemCollecter : MonoBehaviour
             Destroy(collision.gameObject);
             coins++;
             coinsText.text = "Coins: " + coins + "/3";
+
+            if (coins == 3)
+            {
+                Instantiate(objectToSpawn, spawnToObject.transform);
+            }
+
         }
     }
-    
 }
