@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         AnimationUpdateState();
         Jump();
+
+        
     }
 
     private bool isOnGround()
