@@ -7,28 +7,28 @@ public class ItemCollecter : MonoBehaviour
 {
     public int coins = 0;
 
-    [SerializeField] private Text coinsText;
-    [SerializeField] private GameObject objectToSpawn;
-    [SerializeField] private GameObject spawnToObject;
+    public Text coinsText;
+    public GameObject objectToSpawn;
+    public Transform parent;
+    public Vector3 newPosition;
+    public Quaternion newRotation;
 
-    private void Start()
-    {
-        Instantiate(objectToSpawn, spawnToObject.transform);
-    }
+    [SerializeField] AudioSource itemCollectionSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Destroy(collision.gameObject);
+            itemCollectionSoundEffect.Play();
             coins++;
             coinsText.text = "Coins: " + coins + "/3";
+            Destroy(collision.gameObject);
 
             if (coins == 3)
             {
-                Instantiate(objectToSpawn, spawnToObject.transform);
+                Instantiate(objectToSpawn, newPosition, newRotation, parent);
             }
-
         }
     }
+
 }

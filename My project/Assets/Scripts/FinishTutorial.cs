@@ -7,9 +7,11 @@ public class FinishTutorial : MonoBehaviour
 {
     private bool levelCompleted = false;
 
-    void Start()
+    private AudioSource finishTutorialSoundEffect;
+
+    private void Start()
     {
-        
+        finishTutorialSoundEffect = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +20,7 @@ public class FinishTutorial : MonoBehaviour
         {
             levelCompleted = true;
             Invoke("CompleteLevel", 1f);
+            finishTutorialSoundEffect.Play();
         }
     }
 

@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private bool isJumping;
     private Animator anim;
     private SpriteRenderer sprite;
     private BoxCollider2D coll;
@@ -16,12 +15,14 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpHeight = 12f;
+    [SerializeField] private float cutJumpHeight;
 
     float groundedRemember = 0;
     float groundedRememberTime = 0.1f;
 
     private enum MovementState { idle, running, jumping, falling }
-    private MovementState state = MovementState.idle;
+
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     private void Start()
     {
@@ -44,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
 
         groundedRemember -= Time.deltaTime;
         if(isOnGround())
@@ -53,11 +53,23 @@ public class PlayerMovement : MonoBehaviour
             groundedRemember = groundedRememberTime;
         }
 
+        if (Input.GetButtonUp("Jump"))
+        {
+            if(rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * cutJumpHeight);
+            }
+        }
+
         if (Input.GetButtonDown("Jump") && (groundedRemember > 0))
         {
+            jumpSoundEffect.Play();
             groundedRemember = 0;
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
+
+        dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
     }
 
     private void AnimationUpdateState()
