@@ -16,4 +16,9 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void LevelsMenu()
+    {
+        SceneManager.LoadScene("Levels Screen");
+    }
+
 }
