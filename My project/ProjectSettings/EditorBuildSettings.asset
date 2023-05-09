@@ -14,12 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AMain/Level 1.unity
     guid: 3185ebd28bc9f7f46b78057e145d8bbb
-  - enabled: 1
-    path: Assets/AMain/Level 2.unity
-    guid: dccad08c9f576764ea1707fa4d2f8b2e
-  - enabled: 1
-    path: Assets/AMain/Level 3.unity
-    guid: b5dff2b6ffdc0914591561357663cba7
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/AMain/End Screen.unity
     guid: f346e76fe45271241b5dfa1c506da0e0
