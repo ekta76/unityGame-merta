@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float cutJumpHeight;
 
     float groundedRemember = 0;
-    float groundedRememberTime = 0.1f;
+    float groundedRememberTime = 0.2f;
 
     private enum MovementState { idle, running, jumping, falling }
 
