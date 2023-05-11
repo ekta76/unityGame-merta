@@ -16,7 +16,7 @@ public class ObjectMovement_platform : MonoBehaviour
     {
         time++;
 
-        if (time >= 2500)
+        if (time >= 120)
         {
             if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
             {
