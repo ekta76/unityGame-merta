@@ -42,6 +42,9 @@ EditorBuildSettings:
     path: Assets/AMain/Level 9.unity
     guid: 5611fdb4ee5ffc34aaea3f291e1e885d
   - enabled: 1
+    path: Assets/AMain/Level 10.unity
+    guid: 2ec2c24dbe1c4d345b26891d82428010
+  - enabled: 1
     path: Assets/AMain/End Screen.unity
     guid: f346e76fe45271241b5dfa1c506da0e0
   m_configObjects: {}
