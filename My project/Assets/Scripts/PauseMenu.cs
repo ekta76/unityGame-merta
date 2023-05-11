@@ -23,6 +23,14 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1.0f;
+        gameIsPaused = false;
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
